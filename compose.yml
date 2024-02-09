@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: pedbot
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+volumes:
+  mysql-data:
